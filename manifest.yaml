@@ -4,4 +4,4 @@ applications:
   instances: 1
   memory: 512M
   buildpack: nodejs_buildpack
-  command: node earthquake-latest-earthquakes/src/htdocs/js/index.js
+  command: node index.js
