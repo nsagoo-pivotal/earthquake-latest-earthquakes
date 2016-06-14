@@ -1,18 +1,28 @@
 sudo: false
 language: php
 php:
-  - '5.6'
+- '5.6'
 before_install:
-  - composer self-update
-  - nvm install 4.1.2
-  - nvm use 4.1.2
-  - npm install -g grunt-cli
-  - npm --version
-  - node --version
-  - npm list -g
+- composer self-update
+- nvm install 4.1.2
+- nvm use 4.1.2
+- npm install -g grunt-cli
+- npm --version
+- node --version
+- npm list -g
 install:
-  - npm install phantomjs-prebuilt
-  - npm install
-  - php src/lib/pre-install.php --non-interactive
+- npm install phantomjs-prebuilt
+- npm install
+- php src/lib/pre-install.php --non-interactive
 script:
-  - npm test
+- npm test
+deploy:
+  provider: cloudfoundry
+  api: https://api.run.pivotal.io
+  username: nsagoo@pivotal.io
+  password:
+    secure: o1h9qGVIVzbLylB4zDgY+4naL039/Q9+OkZ58kGz1pnNaoMamwNANcTryrTLYEsvISaJJFPEARoGG2z5OIQhVA2cAhKuxjycndu1TubXAZhXOAnZXLpNvjhAf0d5O0LuWsrOkcd2imyKGNH7XTwLFlp2ivhNsYoSZEukwyj/yj1ersHawqv2rXABr3WUR78wBEBkW+LkiqTLlGot7wD9pkuVcuSbxtEAgIxOg1EUkIVgguB5BnM82jHFN1hTHL8CKWT5glMwCSAEtXzBTWFK0U8xUwM1G32NacIlkZqfdf0mZuoMsdsKZnGHftP9QA7W/ljh4urBwsfaT46yE75903JN51Y1mDSdqYNRH04p4S3laMLf63V/tz9Lx2fPVuCCYbQcvt8XKIHUO5lMVObLguI3BxqEzGFheBTYuyCXxIaSnNGSzP2z0Bg/dNCjU+mXXszK0NcgVmVQuBJqG4Tt2ina22Bz7xqZGS2XKaksofEFfZs5SBsnkxt+fbprgnMgjOcb/j7ULs/Ie/aYcPTJv0/jDWfuHGuILyT+meTzi2MQkJTiu/s1PBQht+moYcd6KMQVd3dRP9rdwObh7qNXI24UP8k7Kaj9/zQo9r2ff0J5I719LWPjLcbBwftFIbnuS/USZNX3Sy06wSejtmkDfpaJexnzktb2eF5AiYTVwqg=
+  organization: Federal
+  space: nav
+  on:
+    repo: nsagoo-pivotal/earthquake-latest-earthquakes
